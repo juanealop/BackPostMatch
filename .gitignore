@@ -1,1 +1,14 @@
+# no subir dependencias codigo de dependencias
+# ejecutar comando: npm install     para obtener codigo de dependencias
 node_modules
+
+# archivos temporales
+npm-debug.log*
+pnpm-debug.log*
+*.log
+
+# build y cache
+dist/
+build/
+.cache/
+tmp/
