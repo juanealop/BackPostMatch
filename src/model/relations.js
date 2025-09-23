@@ -4,6 +4,8 @@ import { Partido } from "./Partido.js";
 
 export function setupRelations() {
 
+//----------- SECTION Usuario tiene muchas Reviews <=> Review tiene un Usuario ----------------
+
   Usuario.hasMany(Review, {
     foreignKey: "idReview",
     as: "reviews", // permite realizar consultas usuario.getReviews()
@@ -13,7 +15,21 @@ export function setupRelations() {
 
   Review.belongsTo(Usuario, {
     foreignKey: "idUsuario",
-    as: "usuario", // permite realizar usuario.getUsuario()
+    as: "usuario" // permite realizar review.getUsuario()
+  });
+
+//----------- SECTION Partido tiene muchas Reviews <=> Review tiene un Partido ----------------
+
+  Partido.hasMany(Review, {
+    foreignKey: "idReview",
+    as: "reviews", // permite realizar partido.getReviews()
+    onDelete: "cascade",
+    hooks: true
+  });
+
+  Review.belongsTo(Partido, {
+    foreignKey: "idPartido",
+    as: "partido" // permite realizar review.getPartido()
   });
 
 }

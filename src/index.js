@@ -2,6 +2,7 @@ import app from "./app.js";
 import { sequelize } from "./database/database.js";
 import { loadInitialUsuarios } from "./database/initUsuarios.js";
 import { loadInitialReviews } from "./database/initReviews.js";
+import { loadInitialPartidos } from "./database/initPartidos.js";
 import { setupRelations } from "./model/relations.js";
 import "./model/Review.js" 
 import "./model/Partido.js"
@@ -21,8 +22,10 @@ async function init() {
 
     await sequelize.sync({ force: true }); // crea las tablas
 
-    await loadInitialUsuarios(); // cargar primero los Usuarios 
-    await loadInitialReviews(); // cargar las Reviews
+    //! importa el orden de carga de datos
+    await loadInitialUsuarios(); // cargar Usuarios 
+    await loadInitialPartidos(); // cargar Partidos
+    await loadInitialReviews(); // cargar Reviews
 
     app.listen(3000, () => { // servidor escuchando en el puerto 3000
       console.log("Servidor en puerto 3000");

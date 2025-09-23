@@ -5,19 +5,22 @@ const initialReviews = [
     titulo: "FCB vs RM",
     descripcion: "Partido dificil, pero gana finalmente el FCB",
     fecha: new Date("2024-09-01"),
-    idUsuario: 1
+    idUsuario: 1,
+    idPartido: 1
   },
   {
     titulo: "Atleti vs Sevilla",
     descripcion: "Partido muy cerrado, empate 1-1",
     fecha: new Date("2024-09-02"),
     idUsuario: 2,
+    idPartido: 2,
   },
   {
     titulo: "Valencia vs Villarreal",
     descripcion: "Victoria del Valencia con remontada en el segundo tiempo",
     fecha: new Date("2024-09-03"),
-    idUsuario: 1
+    idUsuario: 1,
+    idPartido: 3
   }
 ];
 

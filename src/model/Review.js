@@ -23,11 +23,19 @@ export const Review = sequelize.define(
       allowNull: false,
       defaultValue: DataTypes.NOW
     },
-    idUsuario: { // relacion con el usuario, una Review tiene un Usuario
+    idUsuario: { // relacion con Usuario, una Review tiene un Usuario
       type: DataTypes.INTEGER,
       allowNull: false,
       references: {
         model: "usuarios",
+        key: "id"
+      }
+    },
+    idPartido: { // relacion con Partido, una Review tiene un Partido
+      type: DataTypes.INTEGER,
+      allowNull: false,
+      references: {
+        model: "partidos",
         key: "id"
       }
     }
