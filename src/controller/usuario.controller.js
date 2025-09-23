@@ -12,7 +12,7 @@ export const createUsuario = async (req,res) => {
 
 export const updateUsuario = async (req,res) => {
   const id = req.params.id;
-  const usuario = Usuario.findByPk(id);
+  const usuario = await Usuario.findByPk(id);
   
   try {
     await usuario.update(req.body);

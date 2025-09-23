@@ -12,7 +12,7 @@ export const createPartido = async (req,res) => {
 
 export const updatePartido = async (req,res) => {
   const id = req.params.id;
-  const partido = Partido.findByPk(id);
+  const partido = await Partido.findByPk(id);
 
   try {
     await partido.update(req.body);
@@ -24,7 +24,7 @@ export const updatePartido = async (req,res) => {
 
 export const deletePartido = async (req,res) => {
   const id = req.params.id;
-  const partido = Partido.findByPk(id);
+  const partido = await Partido.findByPk(id);
   await partido.destroy();
   return res.sendStatus(204); // delete ok
 }

@@ -12,7 +12,7 @@ export const createReview = async (req,res) => {
 
 export const updateReview = async (req,res) => {
   const id = req.params.id;
-  const review = Review.findByPk(id);
+  const review = await Review.findByPk(id);
 
   try {
     await review.update(req.body);
