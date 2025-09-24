@@ -26,7 +26,7 @@ export const getUsuarios = async (req,res) => {
 
 export const getUsuarioById = async (req,res) => {
   const { id } = req.params;
-  if(!id || isNaN(Number(id)) || id <= 0) return res.status(28).json("mensaje":`Error: id=${id} invalido`);
+  if(!id || isNaN(Number(id)) || id <= 0) return res.status(400).json({"mensaje":`Error: id=${id} invalido`});
 
   try {
     const usuario = await Usuario.findByPk(id);

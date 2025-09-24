@@ -25,6 +25,21 @@ export const getReviews = async (req,res) => {
   }
 }
 
+export const getReviewById = async (req,res) => {
+  const { id } = req.params;
+  if(!id || isNaN(Number(id)) || id <= 0) return res.status(400).json({"mensaje":`Error: id=${id} invalido`});
+
+  try {
+    const review = await Review.findByPk(id);
+    if(!review) return res.status(404).json({"mensaje": `Error: la review con id=${id} no existe`});
+
+    return res.json(review);
+  } catch(error) {
+    console.error("Error:",error);
+    return res.status(500).json({"mensaje": "Error: mal funcionamiento de la base de datos"});
+  }
+}
+
 export const getReviewsByIdPartido = async (req,res) => {
   const { idPartido } = req.params;
   if(!idPartido || isNaN(Number(idPartido)) || idPartido <= 0) return res.status(400).json({"mensaje":`Error: idPartido=${idPartido} invalido`});
@@ -77,12 +92,19 @@ export const createReview = async (req,res) => {
 }
 
 export const updateReview = async (req,res) => {
+  const { idUsuario, idPartido } = req.body;
   const { id } = req.params;
   if(!id || isNaN(Number(id)) || id <= 0) return res.status(400).json({"mensaje":`Error: id=${id} invalido`});
+  if(!idUsuario || isNaN(Number(idUsuario)) || idUsuario <= 0) return res.status(400).json({"mensaje":`Error: idUsuario=${idUsuario} invalido`});
+  if(!idPartido || isNaN(Number(idPartido)) || idPartido <= 0) return res.status(400).json({"mensaje":`Error: idPartido=${idPartido} invalido`});
 
   try {
     const review = await Review.findByPk(id);
+    const usuario = await Usuario.findByPk(idUsuario);
+    const partido = await Partido.findByPk(idPartido);
     if(!review) return res.status(404).json({"mensaje": `Error: review con id=${id} no existe`});
+    if(!usuario) return res.status(404).json({"mensaje": `Error: usuario con idUsuario=${idUsuario} no existe`});
+    if(!partido) return res.status(404).json({"mensaje": `Error: partido con idPartido=${idPartido} no existe`});
 
     await review.update(req.body);
     return res.json(review);
