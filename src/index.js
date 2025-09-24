@@ -20,6 +20,8 @@ async function init() {
         console.error("Conexion fallida:",err);
       });
 
+    setupRelations();
+
     await sequelize.sync({ force: true }); // crea las tablas
 
     //! importa el orden de carga de datos

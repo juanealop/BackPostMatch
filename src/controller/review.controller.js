@@ -17,7 +17,13 @@ import { Usuario } from "../model/Usuario.js";
 
 export const getReviews = async (req,res) => {
   try {
-    const reviews = await Review.findAll();
+    const reviews = await Review.findAll({
+      includes: {
+        model: Usuario,
+        as: "usuario",
+        attribute: ["nombre","email","fotoPerfilUrl"]
+      }
+    });
     return res.json(reviews);
   } catch(error) {
     console.error("Error:",error);
@@ -30,7 +36,13 @@ export const getReviewById = async (req,res) => {
   if(!id || isNaN(Number(id)) || id <= 0) return res.status(400).json({"mensaje":`Error: id=${id} invalido`});
 
   try {
-    const review = await Review.findByPk(id);
+    const review = await Review.findByPk(id,{
+      includes: {
+        model: Usuario,
+        as: "usuario",
+        attribute: ["nombre","email","fotoPerfilUrl"]
+      }
+    });
     if(!review) return res.status(404).json({"mensaje": `Error: la review con id=${id} no existe`});
 
     return res.json(review);

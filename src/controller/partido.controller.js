@@ -31,7 +31,26 @@ export const getReviewsByIdPartido = async (req,res) => {
     const partido = await Partido.findByPk(idPartido);
     if(!partido) return res.status(404).json({"mensaje": `Error: el partido con id=${idPartido} no existe`});
     
-    const reviews = await Review.findAll({where: { idPartido }}); // busca en la tabla Review todas las reviews de un partido
+    const reviews = await Review.findAll({
+      where: { idPartido },
+      include: {
+        model: Partido,
+        as: "partido",
+        attributes: [
+          "nombre",
+          "categoria",
+          "visitante",
+          "local",
+          "golesLocal",
+          "golesVisitante",
+          "posesionLocal",
+          "posesionVisitante",
+          "tirosLocal",
+          "tirosVisitante",
+          "fecha"
+        ]
+      }
+    }); // busca en la tabla Review todas las reviews de un partido
     return res.json(reviews);
   } catch(error) {
     console.error("Error:",error);

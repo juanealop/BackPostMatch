@@ -48,7 +48,19 @@ export const getReviewsByIdUsuario = async (req,res) => {
     const usuario = await Usuario.findByPk(idUsuario);
     if(!usuario) return res.status(404).json({"mensaje": `Error: el usuario con id=${idUsuario} no existe`});
 
-    const reviews = await Review.findAll({where: { idUsuario: idUsuario}}); // busca en la tabla Review todas las reviews de un usuario
+    const reviews = await Review.findAll({
+      where: { idUsuario: idUsuario},
+      include: {
+        model: Usuario,
+        as: "usuario",
+        attributes: [
+          "nombre",
+          "email",
+          "password",
+          "fotoPerfilUrl"
+        ]
+      }
+    }); // busca en la tabla Review todas las reviews de un usuario
     return res.json(reviews);
   } catch(error) {
     console.error("Error:",error);
