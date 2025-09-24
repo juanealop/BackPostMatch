@@ -1,10 +1,17 @@
 import { Router } from "express";
-import { getPartidos, createPartido, updatePartido, deletePartido } from "../controller/partido.controller.js";
+import {
+  getPartidos,
+  getPartidoById,
+  createPartido,
+  updatePartido,
+  deletePartido
+} from "../controller/partido.controller.js";
 
 const router = Router();
 
 // get
 router.get("/partidos", getPartidos);
+router.get("/partidos/:id", getPartidoById);
 
 // post
 router.post("/partidos", createPartido);

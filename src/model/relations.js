@@ -7,7 +7,7 @@ export function setupRelations() {
 //----------- SECTION Usuario tiene muchas Reviews <=> Review tiene un Usuario ----------------
 
   Usuario.hasMany(Review, {
-    foreignKey: "idReview",
+    foreignKey: "idUsuario",
     as: "reviews", // permite realizar consultas usuario.getReviews()
     onDelete: "cascade",
     hooks: true
@@ -21,7 +21,7 @@ export function setupRelations() {
 //----------- SECTION Partido tiene muchas Reviews <=> Review tiene un Partido ----------------
 
   Partido.hasMany(Review, {
-    foreignKey: "idReview",
+    foreignKey: "idPartido",
     as: "reviews", // permite realizar partido.getReviews()
     onDelete: "cascade",
     hooks: true
