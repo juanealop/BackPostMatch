@@ -40,37 +40,6 @@ export const getReviewById = async (req,res) => {
   }
 }
 
-export const getReviewsByIdPartido = async (req,res) => {
-  const { idPartido } = req.params;
-  if(!idPartido || isNaN(Number(idPartido)) || idPartido <= 0) return res.status(400).json({"mensaje":`Error: idPartido=${idPartido} invalido`});
-
-  try {
-    const partido = await Partido.findByPk(idPartido);
-    if(!partido) return res.status(404).json({"mensaje": `Error: el partido con id=${idPartido} no existe`});
-    
-    const reviews = await Review.findAll({where: { idPartido: idPartido}}); // busca en la tabla Review todas las reviews de un partido
-    return res.json(reviews);
-  } catch(error) {
-    console.error("Error:",error);
-    return res.status(500).json({"mensaje": "Error: mal funcionamiento de la base de datos"});
-  }
-}
-
-export const getReviewsByIdUsuario = async (req,res) => {
-  const { idUsuario } = req.params;
-  if(!idUsuario || isNaN(Number(idUsuario)) || idUsuario <= 0) return res.status(400).json({"mensaje":`Error: idUsuario=${idUsuario} invalido`});
-
-  try {
-    const usuario = await Usuario.findByPk(idUsuario);
-    if(!usuario) return res.status(404).json({"mensaje": `Error: el usuario con id=${idUsuario} no existe`});
-
-    const reviews = await Review.findAll({where: { idUsuario: idUsuario}}); // busca en la tabla Review todas las reviews de un usuario
-    return res.json(reviews);
-  } catch(error) {
-    console.error("Error:",error);
-    return res.status(500).json({"mensaje": "Error: mal funcionamiento de la base de datos"});
-  }
-}
 
 export const createReview = async (req,res) => {
   const { idUsuario, idPartido } = req.body; // se valida que los ids esten en un formato valido no letras, no negativos o 0, no falsys

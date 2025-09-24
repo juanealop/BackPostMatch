@@ -1,5 +1,6 @@
 import { UniqueConstraintError } from "sequelize"; // excepcion para email duplicado en funcion createUsuario
 import { Usuario } from "../model/Usuario.js";
+import { Review } from "../model/Review.js";
 
 /** Code errors
 * SUCCESSFUL RESPONSES
@@ -33,6 +34,22 @@ export const getUsuarioById = async (req,res) => {
     if(!usuario) return res.status(404).json({"mensaje": `Error: usuario con id=${id} no encontrado`});
 
     return res.json(usuario);
+  } catch(error) {
+    console.error("Error:",error);
+    return res.status(500).json({"mensaje": "Error: mal funcionamiento de la base de datos"});
+  }
+}
+
+export const getReviewsByIdUsuario = async (req,res) => {
+  const { idUsuario } = req.params;
+  if(!idUsuario || isNaN(Number(idUsuario)) || idUsuario <= 0) return res.status(400).json({"mensaje":`Error: idUsuario=${idUsuario} invalido`});
+
+  try {
+    const usuario = await Usuario.findByPk(idUsuario);
+    if(!usuario) return res.status(404).json({"mensaje": `Error: el usuario con id=${idUsuario} no existe`});
+
+    const reviews = await Review.findAll({where: { idUsuario: idUsuario}}); // busca en la tabla Review todas las reviews de un usuario
+    return res.json(reviews);
   } catch(error) {
     console.error("Error:",error);
     return res.status(500).json({"mensaje": "Error: mal funcionamiento de la base de datos"});

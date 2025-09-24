@@ -2,8 +2,6 @@ import { Router } from "express";
 import {
   getReviews,
   getReviewById,
-  getReviewsByIdPartido,
-  getReviewsByIdUsuario,
   createReview,
   updateReview,
   deleteReview
@@ -14,8 +12,6 @@ const router = Router();
 // get
 router.get("/reviews", getReviews);
 router.get("/reviews/:id", getReviewById);
-router.get("/reviews/partido/:idPartido", getReviewsByIdPartido);
-router.get("/reviews/usuario/:idUsuario", getReviewsByIdUsuario);
 
 // post
 router.post("/reviews", createReview);

@@ -1,4 +1,5 @@
-import { Partido } from "../model/Partido.js"
+import { Partido } from "../model/Partido.js";
+import { Review } from "../model/Review.js";
 
 /** Code errors
 * SUCCESSFUL RESPONSES
@@ -16,6 +17,22 @@ export const getPartidos = async (req,res) => {
   try {
     const partidos = await Partido.findAll();
     return res.json(partidos);
+  } catch(error) {
+    console.error("Error:",error);
+    return res.status(500).json({"mensaje": "Error: mal funcionamiento de la base de datos"});
+  }
+}
+
+export const getReviewsByIdPartido = async (req,res) => {
+  const { idPartido } = req.params;
+  if(!idPartido || isNaN(Number(idPartido)) || idPartido <= 0) return res.status(400).json({"mensaje":`Error: idPartido=${idPartido} invalido`});
+
+  try {
+    const partido = await Partido.findByPk(idPartido);
+    if(!partido) return res.status(404).json({"mensaje": `Error: el partido con id=${idPartido} no existe`});
+    
+    const reviews = await Review.findAll({where: { idPartido }}); // busca en la tabla Review todas las reviews de un partido
+    return res.json(reviews);
   } catch(error) {
     console.error("Error:",error);
     return res.status(500).json({"mensaje": "Error: mal funcionamiento de la base de datos"});

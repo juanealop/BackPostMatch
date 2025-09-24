@@ -2,6 +2,7 @@ import { Router } from "express";
 import {
   getPartidos,
   getPartidoById,
+  getReviewsByIdPartido,
   createPartido,
   updatePartido,
   deletePartido
@@ -12,6 +13,7 @@ const router = Router();
 // get
 router.get("/partidos", getPartidos);
 router.get("/partidos/:id", getPartidoById);
+router.get("/partidos/:idPartido/reviews", getReviewsByIdPartido);
 
 // post
 router.post("/partidos", createPartido);
