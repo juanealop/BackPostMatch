@@ -24,6 +24,42 @@ const initialUsuarios = [
     email: "lucia@email.com",
     password: "lucia789",
     fotoPerfilUrl: "lucia.png"
+  },
+  {
+    nombre: "María",
+    email: "maria@email.com",
+    password: "maria123",
+    fotoPerfilUrl: "maria.png"
+  },
+  {
+    nombre: "Pedro",
+    email: "pedro@email.com",
+    password: "pedro456",
+    fotoPerfilUrl: "pedro.png"
+  },
+  {
+    nombre: "Sofía",
+    email: "sofia@email.com",
+    password: "sofia789",
+    fotoPerfilUrl: "sofia.png"
+  },
+  {
+    nombre: "Andrés",
+    email: "andres@email.com",
+    password: "andres321",
+    fotoPerfilUrl: "andres.png"
+  },
+  {
+    nombre: "Elena",
+    email: "elena@email.com",
+    password: "elena654",
+    fotoPerfilUrl: "elena.png"
+  },
+  {
+    nombre: "Miguel",
+    email: "miguel@email.com",
+    password: "miguel987",
+    fotoPerfilUrl: "miguel.png"
   }
 ];
 

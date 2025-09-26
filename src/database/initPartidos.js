@@ -91,6 +91,45 @@ const initialPartidos = [
     tirosLocal: 11,
     tirosVisitante: 11,
     fecha: new Date("2024-01-07")
+  },
+  {
+    nombre: "Rayo Vallecano vs Espanyol",
+    categoria: "LaLiga",
+    local: "Rayo Vallecano",
+    visitante: "Espanyol",
+    golesLocal: 0,
+    golesVisitante: 1,
+    posesionLocal: 53,
+    posesionVisitante: 47,
+    tirosLocal: 8,
+    tirosVisitante: 10,
+    fecha: new Date("2024-01-08")
+  },
+  {
+    nombre: "Cádiz vs Girona",
+    categoria: "LaLiga",
+    local: "Cádiz",
+    visitante: "Girona",
+    golesLocal: 1,
+    golesVisitante: 3,
+    posesionLocal: 37,
+    posesionVisitante: 63,
+    tirosLocal: 6,
+    tirosVisitante: 13,
+    fecha: new Date("2024-01-09")
+  },
+  {
+    nombre: "Las Palmas vs Athletic Club",
+    categoria: "LaLiga",
+    local: "Las Palmas",
+    visitante: "Athletic Club",
+    golesLocal: 2,
+    golesVisitante: 2,
+    posesionLocal: 44,
+    posesionVisitante: 56,
+    tirosLocal: 12,
+    tirosVisitante: 15,
+    fecha: new Date("2024-01-10")
   }
 ];
 
