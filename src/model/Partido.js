@@ -62,6 +62,11 @@ export const Partido = sequelize.define(
       type: DataTypes.DATE,
       allowNull: false,
       defaultValue: DataTypes.NOW
+    },
+    partidoFotoUrl: {
+      type: DataTypes.STRING,
+      allowNull: true,
+      defaultValue: ""
     }
   },
   {

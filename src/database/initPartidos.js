@@ -12,7 +12,8 @@ const initialPartidos = [
     posesionVisistante: 65,
     tirosLocal: 7,
     tirosVisitante: 11,
-    fecha: new Date("2024-01-01")
+    fecha: new Date("2024-01-01"),
+    partidoFotoUrl: "https://firebasestorage.googleapis.com/v0/b/postmatch-c2ddd.firebasestorage.app/o/matchImages%2Fbujit_jalil_stadium_mp.jpg?alt=media&token=3337b053-4218-4a25-9ec6-0e692d52faef"
   },
   {
     nombre: "Atleti vs Sevilla",
@@ -25,7 +26,8 @@ const initialPartidos = [
     posesionVisitante: 50,
     tirosLocal: 8,
     tirosVisitante: 6,
-    fecha: new Date("2024-01-02")
+    fecha: new Date("2024-01-02"),
+    partidoFotoUrl: "https://firebasestorage.googleapis.com/v0/b/postmatch-c2ddd.firebasestorage.app/o/imageUtils%2Festadio_bernabeu.jpg?alt=media&token=426e4fc1-d913-4e53-8e2e-f771c7b8d030"
   },
   {
     nombre: "Valencia vs Villarreal",
@@ -38,7 +40,8 @@ const initialPartidos = [
     posesionVisitante: 45,
     tirosLocal: 10,
     tirosVisitante: 9,
-    fecha: new Date("2024-01-03")
+    fecha: new Date("2024-01-03"),
+    partidoFotoUrl: "https://firebasestorage.googleapis.com/v0/b/postmatch-c2ddd.firebasestorage.app/o/matchImages%2FReungrado_Primero_de_Mayo_mp.jpg?alt=media&token=285d0073-5759-4265-83f9-1c1f4a685033"
   },
   {
     nombre: "Betis vs Real Sociedad",
@@ -51,7 +54,8 @@ const initialPartidos = [
     posesionVisitante: 52,
     tirosLocal: 5,
     tirosVisitante: 12,
-    fecha: new Date("2024-01-04")
+    fecha: new Date("2024-01-04"),
+    partidoFotoUrl: "https://firebasestorage.googleapis.com/v0/b/postmatch-c2ddd.firebasestorage.app/o/imageUtils%2Festadio_bernabeu.jpg?alt=media&token=426e4fc1-d913-4e53-8e2e-f771c7b8d030"
   },
   {
     nombre: "Osasuna vs Celta",
@@ -64,7 +68,8 @@ const initialPartidos = [
     posesionVisitante: 58,
     tirosLocal: 14,
     tirosVisitante: 10,
-    fecha: new Date("2024-01-05")
+    fecha: new Date("2024-01-05"),
+    partidoFotoUrl: "https://firebasestorage.googleapis.com/v0/b/postmatch-c2ddd.firebasestorage.app/o/matchImages%2Fsoccercity_johanessburgo_mp.jpg?alt=media&token=2e28bc30-3093-4292-ae6a-347656fac9ed"
   },
   {
     nombre: "Mallorca vs Granada",
@@ -77,7 +82,8 @@ const initialPartidos = [
     posesionVisitante: 40,
     tirosLocal: 9,
     tirosVisitante: 5,
-    fecha: new Date("2024-01-06")
+    fecha: new Date("2024-01-06"),
+    partidoFotoUrl: "https://firebasestorage.googleapis.com/v0/b/postmatch-c2ddd.firebasestorage.app/o/matchImages%2Fmichigan_stadium_mp.jpg?alt=media&token=0642a571-1878-4539-8f89-f743cb505eb1"
   },
   {
     nombre: "Getafe vs Alavés",
@@ -90,7 +96,8 @@ const initialPartidos = [
     posesionVisitante: 49,
     tirosLocal: 11,
     tirosVisitante: 11,
-    fecha: new Date("2024-01-07")
+    fecha: new Date("2024-01-07"),
+    partidoFotoUrl: "https://firebasestorage.googleapis.com/v0/b/postmatch-c2ddd.firebasestorage.app/o/matchImages%2Fwebley_stadium2_mp.jpg?alt=media&token=d5d1a68f-7ee0-4dce-b785-0abb3c9c349c"
   },
   {
     nombre: "Rayo Vallecano vs Espanyol",
@@ -103,7 +110,8 @@ const initialPartidos = [
     posesionVisitante: 47,
     tirosLocal: 8,
     tirosVisitante: 10,
-    fecha: new Date("2024-01-08")
+    fecha: new Date("2024-01-08"),
+    partidoFotoUrl: "https://firebasestorage.googleapis.com/v0/b/postmatch-c2ddd.firebasestorage.app/o/matchImages%2Flusail_stadium_mp.webp?alt=media&token=a0825053-4cf7-47f6-bde0-fc296beeab65"
   },
   {
     nombre: "Cádiz vs Girona",
@@ -116,7 +124,8 @@ const initialPartidos = [
     posesionVisitante: 63,
     tirosLocal: 6,
     tirosVisitante: 13,
-    fecha: new Date("2024-01-09")
+    fecha: new Date("2024-01-09"),
+    partidoFotoUrl: "https://firebasestorage.googleapis.com/v0/b/postmatch-c2ddd.firebasestorage.app/o/matchImages%2Fbujit_jalil_stadium_mp.jpg?alt=media&token=3337b053-4218-4a25-9ec6-0e692d52faef"
   },
   {
     nombre: "Las Palmas vs Athletic Club",
@@ -129,14 +138,15 @@ const initialPartidos = [
     posesionVisitante: 56,
     tirosLocal: 12,
     tirosVisitante: 15,
-    fecha: new Date("2024-01-10")
+    fecha: new Date("2024-01-10"),
+    partidoFotoUrl: "https://firebasestorage.googleapis.com/v0/b/postmatch-c2ddd.firebasestorage.app/o/imageUtils%2Festadio_bernabeu.jpg?alt=media&token=426e4fc1-d913-4e53-8e2e-f771c7b8d030"
   }
 ];
 
 // funcion asincrona para cargar los Partidos inciales
 export async function loadInitialPartidos() {
   const count = await Partido.count();
-  if(count === 0) {
+  if (count === 0) {
     await Partido.bulkCreate(initialPartidos);
     console.log("Partidos iniciales creados");
   }

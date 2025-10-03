@@ -12,5 +12,6 @@ dist/
 build/
 .cache/
 tmp/
+.idea/
 
 curl-queries/
