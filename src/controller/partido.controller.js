@@ -1,3 +1,4 @@
+import { Usuario } from "../model/Usuario.js";
 import { Partido } from "../model/Partido.js";
 import { Review } from "../model/Review.js";
 
@@ -33,23 +34,30 @@ export const getReviewsByIdPartido = async (req,res) => {
     
     const reviews = await Review.findAll({
       where: { idPartido },
-      include: {
-        model: Partido,
-        as: "partido",
-        attributes: [
-          "nombre",
-          "categoria",
-          "visitante",
-          "local",
-          "golesLocal",
-          "golesVisitante",
-          "posesionLocal",
-          "posesionVisitante",
-          "tirosLocal",
-          "tirosVisitante",
-          "fecha"
-        ]
-      }
+      include: [
+        {
+          model: Partido,
+          as: "partido",
+          attributes: [
+            "nombre",
+            "categoria",
+            "visitante",
+            "local",
+            "golesLocal",
+            "golesVisitante",
+            "posesionLocal",
+            "posesionVisitante",
+            "tirosLocal",
+            "tirosVisitante",
+            "fecha"
+          ]
+        },
+        {
+          model: Usuario,
+          as: "usuario",
+          attributes: ["id", "nombre", "email", "fotoPerfilUrl"] // selecciona los campos que quieras del usuario
+        }
+      ]
     }); // busca en la tabla Review todas las reviews de un partido
     return res.json(reviews);
   } catch(error) {
